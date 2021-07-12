@@ -5,16 +5,22 @@ import Svg, {Rect, Circle} from 'react-native-svg';
 const Logo = props => {
   const {colors} = useTheme();
   return (
-    <Svg width={40} height={40} xmlns="http://www.w3.org/2000/svg" {...props}>
-      <Rect width={40} height={40} rx={10.909} fill={colors.primary} />
-      <Circle cx={24} cy={24.727} r={5.818} fill={colors.background} />
+    <Svg
+      width={35}
+      height={35}
+      viewBox="0 0 35 35"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+      {...props}>
+      <Rect width={35} height={35} rx={9.545} fill={colors.primary} />
+      <Circle cx={21} cy={21.636} r={5.091} fill={colors.background} />
       <Rect
-        x={10.182}
-        y={30.546}
-        width={23.273}
-        height={6.545}
-        rx={3.273}
-        transform="rotate(-90 10.182 30.546)"
+        x={8.909}
+        y={26.727}
+        width={20.364}
+        height={5.727}
+        rx={2.864}
+        transform="rotate(-90 8.91 26.727)"
         fill={colors.background}
       />
     </Svg>

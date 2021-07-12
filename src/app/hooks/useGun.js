@@ -14,7 +14,7 @@ const useGun = () => {
   const store = Store({AsyncStorage});
   const gun = Gun({
     store,
-    peers: ['http://localhost:8765/gun'],
+    peers: ['https://marda.herokuapp.com/gun'],
   });
   //App namespace
   const app = gun.get('jot');

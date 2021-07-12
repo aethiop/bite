@@ -1,23 +1,20 @@
 import React, {useState} from 'react';
 import {useContext} from 'react';
-import {
-  View,
-  Text,
-  SafeAreaView,
-  StyleSheet,
-  TouchableOpacity,
-} from 'react-native';
+import {View, SafeAreaView, StyleSheet, TouchableOpacity} from 'react-native';
 import {Auth} from '../core/auth';
 import {User} from '../core/user';
+import {Logo} from '../../ui/atoms/LogoAtom';
+import Scaffold from '../../ui/molecules/Scaffold';
+import {Text, Heading} from '../../ui/atoms/TypoAtom';
 
 const FriendPage = ({navigation}) => {
   const {profile} = useContext(User);
   const {logout} = useContext(Auth);
   const {username, pair} = profile;
   return (
-    <SafeAreaView style={styles.container}>
-      <Text>Friends</Text>
-    </SafeAreaView>
+    <Scaffold topBar={<Logo />}>
+      <Heading>Friends</Heading>
+    </Scaffold>
   );
 };
 

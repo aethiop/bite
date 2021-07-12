@@ -8,6 +8,7 @@ import {name as appName} from './app.json';
 import {
   configureFonts,
   DefaultTheme,
+  DarkTheme,
   Provider as PaperProvider,
 } from 'react-native-paper';
 import Icon from 'react-native-vector-icons/Ionicons';
@@ -77,12 +78,16 @@ const fontConfig = {
 
 const theme = {
   ...DefaultTheme,
+  ...DarkTheme,
   roundness: 16,
   fonts: configureFonts(fontConfig),
+  dark: false,
   colors: {
+    ...DarkTheme.colors,
     ...DefaultTheme.colors,
-    placeholder: '#cacaca',
-    subheader: '#1f1f1f',
+  },
+  animation: {
+    scale: 1,
   },
 };
 export default function Main() {

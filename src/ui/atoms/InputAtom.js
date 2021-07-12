@@ -4,13 +4,13 @@ import {TextInput, useTheme} from 'react-native-paper';
 const Input = ({...rest}) => {
   return <TextInput mode="outlined" style={styles.input} {...rest} />;
 };
-const IconInput = ({name, ...rest}) => {
+const IconInput = ({name, style, ...rest}) => {
   const {colors} = useTheme();
   return (
     <TextInput
       mode="outlined"
-      left={<TextInput.Icon style={styles.icon} name={name} />}
-      style={styles.input}
+      left={<TextInput.Icon style={styles.icon} name={name} size={20} />}
+      style={[styles.input, style]}
       {...rest}
     />
   );

@@ -1,29 +1,40 @@
 import React, {useContext, useState} from 'react';
-import {TouchableOpacity, View, Text} from 'react-native';
+import {StyleSheet, Dimensions} from 'react-native';
 import {FilledButton, TextButton} from '../../ui/atoms/ButtonAtom';
 import {IconInput} from '../../ui/atoms/InputAtom';
 import {SubHeading} from '../../ui/atoms/TypoAtom';
 import {Auth} from '../core/auth';
 import {LogoTitle} from '../../ui/molecules/Title';
+import Scaffold from '../../ui/molecules/Scaffold';
+import {Text, Heading} from '../../ui/atoms/TypoAtom';
 
 const LoginScreen = ({navigation}) => {
   const [key, setKey] = useState('');
   const {login} = useContext(Auth);
 
   return (
-    <View style={{marginTop: 40, alignItems: 'center'}}>
-      <LogoTitle />
-      <SubHeading>Enter your key !</SubHeading>
+    <Scaffold topBar={<LogoTitle />}>
+      <SubHeading style={{marginTop: Dimensions.get('screen').height / 5}}>
+        Enter your key !
+      </SubHeading>
       <IconInput
+        style={{marginTop: 10}}
         name="finger-print"
         onChangeText={text => setKey(text)}
-        placeholder={'Paste your key here...'}
+        placeholder={'Paste your key...'}
       />
+      <TextButton
+        style={{marginTop: 20}}
+        full={true}
+        onPress={() => {
+          navigation.navigate('Register');
+        }}>
+        New User?
+      </TextButton>
       <FilledButton
         full={true}
-        onPress={async () => {
+        onPress={() => {
           try {
-            console.log('FROM LOGIN SCREEN: ', key);
             login(JSON.parse(key));
           } catch (e) {
             console.log(e);
@@ -31,15 +42,7 @@ const LoginScreen = ({navigation}) => {
         }}>
         Login
       </FilledButton>
-
-      <TextButton
-        full={true}
-        onPress={() => {
-          navigation.navigate('Register');
-        }}>
-        Create an account..
-      </TextButton>
-    </View>
+    </Scaffold>
   );
 };
 

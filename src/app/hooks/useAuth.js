@@ -1,6 +1,7 @@
 import React, {useMemo, useReducer, useEffect} from 'react';
 import useGun from './useGun';
 import AsyncStorage from '@react-native-async-storage/async-storage';
+import {tagUsernameId} from './useHelper';
 
 const ACTIONS = {
   ADD_USER: 'add_user',
@@ -23,11 +24,17 @@ const useAuth = () => {
   );
 
   // register an account
-  const register = async name => {
-    await SEA.pair().then(async key => {
+  const register = name => {
+    return SEA.pair().then(async key => {
       console.log('KEY CREATED: ', key);
       login(key);
+      var taggedId = tagUsernameId(name);
       user.get('profile').get('name').put(name);
+      user.get('profile').get('id').put(taggedId.slice(-4));
+      app
+        .get('users')
+        .set({userId: taggedId, meta: {pub: key.pub, epub: key.epub}});
+      console.log(tagUsernameId(name));
     });
   };
 
@@ -58,10 +65,9 @@ const useAuth = () => {
   const logout = () => {
     // logout
     console.log('LOGGED OUT');
-
-    dispatch({type: ACTIONS.REMOVE_USER});
     AsyncStorage.removeItem('user');
     user.leave();
+    dispatch({type: ACTIONS.REMOVE_USER});
   };
 
   // eslint-disable-next-line react-hooks/exhaustive-deps

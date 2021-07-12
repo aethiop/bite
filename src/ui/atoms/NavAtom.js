@@ -6,7 +6,21 @@ import {IconButton} from './ButtonAtom';
 const BottomNav = ({state, descriptors, navigation, iconNames}) => {
   const {colors} = useTheme();
   return (
-    <Surface style={styles.navbar}>
+    <Surface
+      style={{
+        backgroundColor: colors.surface,
+        position: 'absolute',
+        bottom: Dimensions.get('window').width / 20,
+        flexDirection: 'row',
+        justifyContent: 'center',
+        alignItems: 'center',
+        height: 70,
+        borderRadius: 18,
+        width: '80%',
+        marginLeft: 40,
+        marginRight: 40,
+        elevation: 6,
+      }}>
       {state.routes.map((route, index) => {
         const {options} = descriptors[route.key];
 
@@ -34,7 +48,7 @@ const BottomNav = ({state, descriptors, navigation, iconNames}) => {
           <IconButton
             name={isFocused ? iconNames[index] : `${iconNames[index]}-outline`}
             key={index}
-            color={isFocused ? null : colors.backdrop}
+            color={isFocused ? null : colors.onSurface}
             activeOpacity={1}
             accessibilityRole="button"
             accessibilityStates={isFocused ? ['selected'] : []}
@@ -58,18 +72,4 @@ const BottomNav = ({state, descriptors, navigation, iconNames}) => {
   );
 };
 
-const styles = StyleSheet.create({
-  navbar: {
-    position: 'absolute',
-    bottom: Dimensions.get('window').width / 20,
-    flexDirection: 'row',
-    justifyContent: 'center',
-    alignItems: 'center',
-    height: 70,
-    borderRadius: 18,
-    width: '80%',
-    marginLeft: 40,
-    marginRight: 40,
-  },
-});
 export {BottomNav};

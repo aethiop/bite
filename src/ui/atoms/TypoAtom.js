@@ -20,6 +20,19 @@ const SubHeading = ({children, style}) => {
     </Title>
   );
 };
+const Text = ({children, style}) => {
+  return (
+    <Paragraph
+      style={[
+        {
+          fontWeight: '500',
+        },
+        style,
+      ]}>
+      {children}
+    </Paragraph>
+  );
+};
 
 const styles = StyleSheet.create({
   head: {
@@ -27,4 +40,4 @@ const styles = StyleSheet.create({
     fontSize: 32,
   },
 });
-export {Heading, SubHeading};
+export {Heading, SubHeading, Text};

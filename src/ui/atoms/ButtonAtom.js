@@ -5,7 +5,7 @@ const IconButton = ({name, color, ...rest}) => {
   const {colors} = useTheme();
   return <IB icon={name} color={color || colors.primary} size={24} {...rest} />;
 };
-const FilledButton = ({children, full, ...rest}) => {
+const FilledButton = ({children, full, style, ...rest}) => {
   const {colors} = useTheme();
   return (
     <Button
@@ -13,7 +13,7 @@ const FilledButton = ({children, full, ...rest}) => {
       color={colors.primary}
       uppercase={false}
       contentStyle={styles.filled}
-      style={{width: full ? '80%' : 'auto'}}
+      style={[{width: full ? '80%' : 'auto'}, style]}
       labelStyle={{fontWeight: '600'}}
       {...rest}>
       {children}
@@ -21,7 +21,7 @@ const FilledButton = ({children, full, ...rest}) => {
   );
 };
 
-const TextButton = ({children, full, ...rest}) => {
+const TextButton = ({children, full, style, ...rest}) => {
   const {colors} = useTheme();
   return (
     <Button
@@ -29,7 +29,7 @@ const TextButton = ({children, full, ...rest}) => {
       color={colors.primary}
       uppercase={false}
       contentStyle={styles.filled}
-      style={{width: full ? '80%' : 'auto'}}
+      style={[{width: full ? '80%' : 'auto'}, style]}
       labelStyle={{fontWeight: '600'}}
       {...rest}>
       {children}
