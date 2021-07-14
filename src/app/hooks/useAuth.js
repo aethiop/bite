@@ -31,10 +31,13 @@ const useAuth = () => {
       var taggedId = tagUsernameId(name);
       user.get('profile').get('name').put(name);
       user.get('profile').get('id').put(taggedId.slice(-4));
-      app
-        .get('users')
-        .set({userId: taggedId, meta: {pub: key.pub, epub: key.epub}});
-      console.log(tagUsernameId(name));
+      app.get('users').set({
+        id: taggedId.slice(-4),
+        name: name,
+        pub: key.pub,
+        epub: key.epub,
+      });
+      console.log(taggedId);
     });
   };
 
@@ -80,11 +83,11 @@ const useAuth = () => {
   }));
   useEffect(() => {
     AsyncStorage.getItem('user').then(u => {
-      if (!state.user && u) {
+      if (!state.profile && u) {
         dispatch({type: ACTIONS.ADD_USER, payload: JSON.parse(u)});
       }
     });
-  });
+  }, [state.profile]);
 
   return {auth, state, app, user, gun};
 };

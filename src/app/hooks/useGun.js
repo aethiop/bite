@@ -17,7 +17,7 @@ const useGun = () => {
     peers: ['https://marda.herokuapp.com/gun'],
   });
   //App namespace
-  const app = gun.get('jot');
+  const app = gun.get('bite');
   const user = gun.user();
   return {gun, app, user, SEA};
 };

@@ -1,5 +1,4 @@
 import Gun from 'gun/gun';
-import 'gun/lib/utils';
 
 export const isValidKey = key => {
   return !!(

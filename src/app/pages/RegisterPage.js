@@ -21,7 +21,7 @@ const RegisterScreen = ({navigation}) => {
         style={{marginTop: 10}}
         name="person-outline"
         onChangeText={text => setUsername(text)}
-        placeholder={'Type your name...'}
+        placeholder={'What do you like to be called'}
       />
       <TextButton
         style={{marginTop: 20}}
